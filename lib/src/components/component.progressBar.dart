@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+/*This component is use to show the cleaned progress  */
 //ignore: must_be_immutable
 class ProgressIndicatorComponent extends StatefulWidget {
   String doneTotal;
   double percent;
+  String totalRooms;
   ProgressIndicatorComponent({
     this.doneTotal = '0',
     this.percent = 0.0,
+    this.totalRooms = '20'
   });
   @override
   _ProgressIndicatorComponentState createState() => _ProgressIndicatorComponentState();
@@ -18,7 +21,7 @@ class _ProgressIndicatorComponentState extends State<ProgressIndicatorComponent>
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    String percentString = (widget.percent * 100).toString();
+    String percentString = (widget.percent * 100).toStringAsFixed(2);
     return Container(
       margin: EdgeInsets.only(top: 30.0),
       child: Column(
@@ -29,7 +32,7 @@ class _ProgressIndicatorComponentState extends State<ProgressIndicatorComponent>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(widget.doneTotal+'/20', overflow: TextOverflow.ellipsis,),
+                Text(widget.doneTotal +' / ' + widget.totalRooms, overflow: TextOverflow.fade,),
                 SizedBox(width: 10.0),
                 LinearPercentIndicator(
                   width: size.width * 0.7,
@@ -46,7 +49,7 @@ class _ProgressIndicatorComponentState extends State<ProgressIndicatorComponent>
                   percent: widget.percent,
                 ),
                 SizedBox(width: 10.0),
-                Text(percentString + '%', overflow: TextOverflow.ellipsis,)
+                Text(percentString + '%', overflow: TextOverflow.fade, maxLines: 2,)
               ],
             ),
           )

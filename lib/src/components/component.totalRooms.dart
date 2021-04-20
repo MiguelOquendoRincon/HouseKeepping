@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/*This component receive totalRooms and render it. */
 //ignore: must_be_immutable
 class TotalRoomsComponent extends StatefulWidget {
   int totalRooms;

@@ -1,13 +1,11 @@
+import './routes/Routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './routes/Routes.dart';
+import 'package:house_kepping/src/preferences/preferences.dart';
 
-void main() {
-  runApp(MyApp());
-}
+
 
 class MyApp extends StatelessWidget {
-  static final _myTabbedPageKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,5 +21,12 @@ class MyApp extends StatelessWidget {
       routes: Routes.getRoutes()
     );
   }
+}
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = UserPreferences.getInstPref();
+  await prefs.loadPrefs();
+  runApp(MyApp());
 }
 

@@ -36,8 +36,10 @@ dependencies:
   http:
   #Used to show the progress bar.
   percent_indicator: "^2.1.7+2"
-
-  loadmore: ^2.0.1
+  #Used to set user preferences.
+  shared_preferences: ^2.0.5
+  #Used to collapse widgets
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:
