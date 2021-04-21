@@ -82,19 +82,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
  #####    ####   #  ######  ##### 
 */
   @override
-  Widget build(BuildContext context) {
-
-    /*We obligate to redraw the page if something in tabController index change.*/
-    // _tabController.addListener(() { 
-    //   if(_tabController.index != 1){
-    //     setState(() => playing = false);
-    //   }else{
-    //     setState(() {});
-    //   }
-    // });
-
-    
-
+  Widget build(BuildContext context) {    
     //Get screen mobile size
     size = MediaQuery.of(context).size;
     //Assign 95% of screen mobile size, we use it to set the width to all fathers container.
@@ -170,6 +158,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               setState(() {});
             },
             child: SingleChildScrollView(
+              //If it is false, show loading screen
               child: logic.items.length != 0 
               ?
               Column(
@@ -239,6 +228,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                       color: Color(0xFFBEC2C5)
                     )
                   ),
+                  //Ask if cronometer is running 
                   child: playing 
                   ?
                   Column(
@@ -264,7 +254,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     ],
                   )
                 ),
-                
+                //Ask if cronometer is running 
                 playing 
                 ?
                 Column(
