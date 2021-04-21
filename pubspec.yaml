@@ -40,6 +40,7 @@ dependencies:
   shared_preferences: ^2.0.5
   #Used to collapse widgets
   expandable: ^5.0.1
+  test: 
 
 dev_dependencies:
   flutter_test:

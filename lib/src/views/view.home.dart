@@ -29,7 +29,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   Stopwatch stopWatch = Stopwatch();
 
+  //Here we load our user preferences to set the expend time in one room.
   final prefs = UserPreferences();
+  //Here we load some important information about our methods to get rooms.
   final logic = PaginationLogic();
   
 
@@ -65,8 +67,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void dispose() {
     _tabController.dispose();
     controller.removeListener(_listener);
-    stopWatch.reset();
     stopWatch.stop();
+    stopWatch.reset();
     super.dispose();
   }
 
@@ -83,13 +85,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
 
     /*We obligate to redraw the page if something in tabController index change.*/
-    _tabController.addListener(() { 
-      if(_tabController.index != 1){
-        setState(() => playing = false);
-      }else{
-        setState(() {});
-      }
-    });
+    // _tabController.addListener(() { 
+    //   if(_tabController.index != 1){
+    //     setState(() => playing = false);
+    //   }else{
+    //     setState(() {});
+    //   }
+    // });
 
     
 
@@ -334,6 +336,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                             stopWatch.stop();
                             stopWatch.reset();
                             logic.resetRoom();
+                            prefs.totalTime = '';
                             _tabController.animateTo((_tabController.index + 2));
                             
                         },
@@ -660,9 +663,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   percent: logic.items.length != 0 ? (roomsCleaned.length / logic.items.length) : 0.0
                 ),
                 
-                TotalRoomsComponent(
-                  totalRooms: logic.items.length,
-                ),
+                TotalRoomsComponent(totalRooms: logic.items.length),
                 
                 Container(
                   margin: EdgeInsets.only(top: 30.0),

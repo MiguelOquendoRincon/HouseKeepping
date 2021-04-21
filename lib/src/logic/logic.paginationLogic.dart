@@ -29,12 +29,6 @@ class PaginationLogic extends ChangeNotifier{
     notifyListeners();
   }
 
-  // void setRoom(String roomSelected){
-  //   room ?? '';
-  //   room = roomSelected;
-  //   notifyListeners();
-  // }
-
   void setRoom(Room roomSelected){
     room = roomSelected;
     notifyListeners();
